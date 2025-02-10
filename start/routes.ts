@@ -14,4 +14,4 @@ import PersonnelController from '#controllers/personnel_controller'
 
 router.resource('departements', DepartementsController)
 router.resource('postes', PostesController)
-router.resource('personnel', PersonnelController)
+router.resource('personnels', PersonnelController)
