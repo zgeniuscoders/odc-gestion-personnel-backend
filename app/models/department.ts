@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import * as relations from '@adonisjs/lucid/types/relations'
 import Poste from '#models/poste'
 
@@ -17,5 +17,5 @@ export default class Department extends BaseModel {
   declare updatedAt: DateTime
 
   @hasMany(() => Poste)
-  declare personnel: relations.HasMany<typeof Poste>
+  declare postes: relations.HasMany<typeof Poste>
 }
