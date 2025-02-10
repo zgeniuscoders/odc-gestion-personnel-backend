@@ -2,6 +2,7 @@ import vine from '@vinejs/vine'
 
 export const validationCreationDepartment = vine.compile(
   vine.object({
-    name: vine.string(),
+    nom: vine.string(),
+    description: vine.string(),
   })
 )

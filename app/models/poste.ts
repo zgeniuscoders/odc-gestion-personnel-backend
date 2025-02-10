@@ -8,7 +8,13 @@ export default class Poste extends BaseModel {
   declare id: number
 
   @column()
-  declare grade: string
+  declare titre: string
+
+  @column()
+  declare description: string
+
+  @column()
+  declare salaire: number
 
   @column()
   declare departmentId: number
