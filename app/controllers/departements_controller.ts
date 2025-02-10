@@ -7,7 +7,7 @@ export default class DepartementsController {
    * Display a list of resource
    */
   async index({ response }: HttpContext) {
-    const departments = await Department.all()
+    const departments = await Department.query().preload('postes')
     return response.ok({ data: departments })
   }
 
