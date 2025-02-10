@@ -8,12 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
 
       table.string('nom').notNullable()
-
       table.text('description').notNullable()
-
-      table.integer('poste_id')
-        .unsigned()
-        .references("postes.id")
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
