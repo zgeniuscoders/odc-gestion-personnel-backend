@@ -1,3 +1,145 @@
+# Documentation de l'authentification
+
+
+## Méthodes
+
+### 1. login
+
+#### URL
+```
+POST /login
+```
+
+#### Description
+Permet à un utilisateur de se connecter en vérifiant ses identifiants (email et mot de passe).
+
+#### Paramètres
+- `email`: Adresse e-mail de l'utilisateur.
+- `password`: Mot de passe de l'utilisateur.
+
+#### Exemple de Requête
+```json
+{
+    "email": "user@example.com",
+    "password": "password123"
+}
+```
+
+#### Réponse
+- **Succès**: Retourne un objet contenant un jeton d'accès.
+```json
+{
+    "data": {
+        "type": "bearer",
+        "name": null,
+        "token": "oat_MQ.b3RuYXZVR0NBR3dLc2xXS2l6OEdkMjhwUWgyQlB1am1weGtfa1JvUDgyMjkzODkzMQ",
+        "abilities": [
+            "*"
+        ],
+        "lastUsedAt": null,
+        "expiresAt": null
+    }
+}
+```
+- **Erreur**: Si les identifiants sont invalides, retourne une réponse d'erreur.
+```json
+{
+    "errors": [
+        {
+            "message": "Invalid user credentials"
+        }
+    ]
+}
+```
+
+### 2. logout
+
+#### URL
+```
+POST /logout
+```
+
+#### Description
+Permet à un utilisateur de se déconnecter en supprimant le jeton d'accès courant.
+
+#### Paramètres
+Aucun.
+
+#### Réponse
+- **Succès**: Retourne un message confirmant que la déconnexion a été effectuée.
+```json
+{
+    "message": "Token deleted"
+}
+```
+- **Erreur**: Si le jeton n'est pas trouvé, une réponse d'erreur est renvoyée.
+```json
+{
+    "message": "Token not found"
+}
+```
+
+### 3. register
+
+#### URL
+```
+POST /register
+```
+
+#### Description
+Permet d'enregistrer un nouvel utilisateur dans le système.
+
+#### Paramètres
+- `fullName`: Nom complet de l'utilisateur.
+- `email`: Adresse e-mail de l'utilisateur.
+- `password`: Mot de passe de l'utilisateur.
+
+#### Exemple de Requête
+```json
+{
+    "fullName": "John Doe",
+    "email": "john@example.com",
+    "password": "password123"
+}
+```
+
+#### Réponse
+- **Succès**: Retourne les détails de l'utilisateur nouvellement enregistré.
+```json
+{
+    "data": {
+        "id": 1,
+        "fullName": "John Doe",
+        "email": "john@example.com"
+    }
+}
+```
+- **Erreur**: Si des champs requis ne sont pas fournis, retourne une réponse d'erreur.
+```json
+{
+    "errors": [
+        {
+            "message": "The fullName field must be defined",
+            "rule": "required",
+            "field": "fullName"
+        },
+        {
+            "message": "The email field must be defined",
+            "rule": "required",
+            "field": "email"
+        },
+        {
+            "message": "The password field must be defined",
+            "rule": "required",
+            "field": "password"
+        }
+    ]
+}
+```
+
+
+
+Cette documentation complète couvre les méthodes de connexion, de déconnexion et d'inscription de la classe `AuthController`, ainsi que les exemples de réponses et les cas d'erreur correspondants.
 # Documentation API Départements
 
 ## 1. Récupérer tous les Départements
