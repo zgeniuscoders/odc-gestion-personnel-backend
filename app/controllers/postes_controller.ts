@@ -7,7 +7,8 @@ export default class PostesController {
    * Display a list of resource
    */
   async index({ response }: HttpContext) {
-    const postes = await Poste.query().preload('department')
+    const postes = await Poste.query().preload('department').preload('personnels')
+
     return response.ok({ data: postes })
   }
 
@@ -27,6 +28,9 @@ export default class PostesController {
   async show({ params, response }: HttpContext) {
     const id = params.id
     const poste = await Poste.findOrFail(id)
+    poste.load('department')
+    poste.load('personnels')
+
     return response.ok({ data: poste })
   }
 
