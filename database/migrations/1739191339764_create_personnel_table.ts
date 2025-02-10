@@ -7,16 +7,18 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
 
-      table.string("Nom").notNullable()
-      table.string("post_nom").notNullable()
-      table.string("prenom").notNullable()
-      table.integer("age").notNullable()
-      table.string("genre").notNullable()
-      table.string("nationalité").notNullable()
+      table.string('nom').notNullable()
+      table.string('postnom').notNullable()
+      table.string('prenom').notNullable()
+      table.string('email').notNullable()
+      table.string('numero_telephone').notNullable()
 
-      table.integer('poste_id').unsigned().references("postes.id")
+      table.string('profile').notNullable()
 
+      table.date('date_naissance').notNullable()
+      table.date('date_embauche').notNullable()
 
+      table.integer('poste_id').unsigned().references('postes.id')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

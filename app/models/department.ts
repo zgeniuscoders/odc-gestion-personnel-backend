@@ -8,7 +8,10 @@ export default class Department extends BaseModel {
   declare id: number
 
   @column()
-  declare name: string
+  declare nom: string
+
+  @column()
+  declare description: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
