@@ -14,8 +14,8 @@ import PersonnelController from '#controllers/personnel_controller'
 import AuthController from '#controllers/auth_controller'
 import { middleware } from '#start/kernel'
 
-router.get('login', [AuthController, 'login'])
-router.get('register', [AuthController, 'register'])
+router.post('login', [AuthController, 'login'])
+router.post('register', [AuthController, 'register'])
 
 router
   .group(() => {
