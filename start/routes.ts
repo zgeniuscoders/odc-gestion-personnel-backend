@@ -19,7 +19,7 @@ router.post('register', [AuthController, 'register'])
 
 router
   .group(() => {
-    router.get('logout', [AuthController, 'logout'])
+    router.post('logout', [AuthController, 'logout'])
 
     router.resource('departements', DepartementsController)
     router.resource('postes', PostesController)

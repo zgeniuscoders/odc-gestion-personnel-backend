@@ -13,9 +13,10 @@ export default class PersonnelController {
     const data = request.all()
     const donneeValider = await validationCreationPersonnel.validate(data)
     const personnel = await Personnel.create(donneeValider)
+
     return response.ok({ data: personnel })
   }
-
+// specific personnal 
   async show({ params, response }: HttpContext) {
     const id = params.id
     const personnel = await Personnel.findOrFail(id)
@@ -39,7 +40,8 @@ export default class PersonnelController {
   async destroy({ params, response }: HttpContext) {
     const id = params.id
     const personnel = await Personnel.findOrFail(id)
-    await personnel.delete()
+    await personnel.delete() 
+    
 
     return response.ok({ data: 'le personnel a été suprime avec succes' })
   }
