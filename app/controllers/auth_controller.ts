@@ -16,7 +16,10 @@ export default class AuthController {
     // permet de cree une cle d'access
     const authToken = await User.accessTokens.create(user)
 
-    return response.ok({ data: authToken })
+    return response.ok({ data: {
+      token: authToken,
+      user: user
+    } })
   }
 
   // methode pour deconnecter un utilisateur et supprimer sa session
